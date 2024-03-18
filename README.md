@@ -1,11 +1,16 @@
 # BARK Prediction Platform
 
+**Empowering Charity Through Predictive Giving**
+
+## Introduction
+
 Welcome to BARK Prediction dApp! This decentralized application (dApp) built on the Solana blockchain empowers users to participate in prediction markets and unleash predictive insights on Solana.
 
 ![BARK Prediction dApp](https://github.com/bark-community/prediction-platform/blob/a4873765e5787c29ffcd4aba9e15be4715e48406/github/github-header.png)
 
 ## Table of Contents
 - [BARK Prediction Platform](#bark-prediction-platform)
+  - [Introduction](#introduction)
   - [Table of Contents](#table-of-contents)
   - [Features:](#features)
   - [Installation](#installation)
