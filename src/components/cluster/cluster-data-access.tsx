@@ -120,7 +120,7 @@ function getClusterUrlParam(cluster: Cluster): string {
       suffix = "devnet";
       break;
     case ClusterNetwork.Mainnet:
-      suffix = "";
+      suffix = "mainnet";
       break;
     case ClusterNetwork.Testnet:
       suffix = "testnet";

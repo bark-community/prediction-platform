@@ -22,7 +22,7 @@ export function ExplorerLink({ path, label, className }: { path: string; label: 
       href={getExplorerUrl(path)}
       target="_blank"
       rel="noopener noreferrer"
-      className={className ? className : `link hover:text-purple-500`}
+      className={className ? className : `link hover:text-blue-500`}
     >
       {label}
     </a>

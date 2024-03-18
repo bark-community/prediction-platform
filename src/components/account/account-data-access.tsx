@@ -40,7 +40,7 @@ export function useRequestAirdrop({ address }: { address: PublicKey }) {
     },
     onSuccess: (signature) => {
       if (signature) {
-        toast.success("Transaction Successfull", {
+        toast.success("Transaction Successful", {
           description: ellipsify(signature),
           action: {
             label: "Explorer Link",
@@ -102,7 +102,7 @@ export function useTransferSol({ address }: { address: PublicKey }) {
     },
     onSuccess: (signature) => {
       if (signature) {
-        toast.success("Transaction Successfull", {
+        toast.success("Transaction Successful", {
           description: ellipsify(signature),
           action: {
             label: "Explorer Link",
