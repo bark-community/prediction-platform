@@ -40,7 +40,7 @@ export function NavBar() {
               </div>
               <div className="flex flex-shrink-0 items-center">
                 <Link className="flex items-center space-x-3 rtl:space-x-reverse" href="/">
-                  <Image className="w-auto h-8" alt="Solana Logo" src="/solana.svg" width={46} height={46} priority />
+                  <Image className="w-auto h-8" alt="Bark Logo" src="/bark-logo-dark.svg" width={46} height={46} priority />
                 </Link>
               </div>
               <div className="hidden md:ml-3 md:flex md:space-x-6">
