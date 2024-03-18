@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-    <img src="https://github.com/bark-community/prediction-platform/blob/4bf0941e80c8c8d7d904e428edb0bd05b0c20e73/github/header.png" alt="BARK Prediction dApp" width="2000">
+    <img src="https://github.com/bark-community/prediction-platform/blob/4bf0941e80c8c8d7d904e428edb0bd05b0c20e73/github/github-header.png" alt="BARK Prediction dApp" width="2000">
 </div>
 
 ## Table of Contents
