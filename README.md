@@ -1,23 +1,18 @@
-# BARK Prediction Platform
+![BARK Prediction dApp Hero](https://github.com/bark-community/prediction-platform/blob/a4873765e5787c29ffcd4aba9e15be4715e48406/github/github-header.png "BARK Prediction dApp Hero")
 
-**Empowering Charity Through Predictive Giving**
-
-## Introduction
-
-Welcome to BARK Prediction dApp! This decentralized application (dApp) built on the Solana blockchain empowers users to participate in prediction markets and unleash predictive insights on Solana.
-
-![BARK Prediction dApp](https://github.com/bark-community/prediction-platform/blob/a4873765e5787c29ffcd4aba9e15be4715e48406/github/github-header.png)
 
 ## Table of Contents
-- [BARK Prediction Platform](#bark-prediction-platform)
-  - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Features:](#features)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Documentation (not implemented)](#documentation-not-implemented)
-  - [Contributing](#contributing)
-  - [License](#license)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+- [Features:](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+Welcome to BARK Prediction dApp! This decentralized application (dApp) built on the Solana blockchain empowers users to participate in prediction markets and unleash predictive insights on Solana.
 
 ## Features:
 - **Prediction Markets:** Participate in prediction markets on various assets.
@@ -57,7 +52,7 @@ To install and run the BARK Prediction dApp locally, follow these steps:
 ## Usage
 Once the dApp is running, you can start exploring the prediction markets, accessing real-time price feeds, managing your account, and contributing to charitable causes directly from the interface. Follow the on-screen instructions to navigate through the features and functionalities of the dApp.
 
-## Documentation (not implemented)
+## Documentation
 For detailed project documentation, please visit [Project Documentation](https://github.com/bark-community/prediction-platform/blob/main/docs/).
 
 ## Contributing
