@@ -1,4 +1,6 @@
-![BARK Prediction dApp](https://github.com/bark-community/prediction-platform/blob/a4873765e5787c29ffcd4aba9e15be4715e48406/github/header.png "BARK Prediction dApp")
+<div style="text-align: center;">
+    <img src="https://github.com/bark-community/prediction-platform/blob/a4873765e5787c29ffcd4aba9e15be4715e48406/github/header.png" alt="BARK Prediction dApp" width="500">
+</div>
 
 
 ## Table of Contents
