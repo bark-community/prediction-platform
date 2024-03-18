@@ -1,4 +1,4 @@
-<img src="https://github.com/bark-community/prediction-platform/blob/2d4064427cffeac51cb457921435f16605be84af/github/github-header.png" alt="BARK Prediction dApp" width="500">
+<img src="https://github.com/bark-community/prediction-platform/blob/2d4064427cffeac51cb457921435f16605be84af/github/github-header.png" alt="BARK Prediction dApp" width="2000">
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
