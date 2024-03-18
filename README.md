@@ -1,7 +1,6 @@
 <div style="text-align: center;">
-    <img src="https://github.com/bark-community/prediction-platform/blob/a4873765e5787c29ffcd4aba9e15be4715e48406/github/header.png" alt="BARK Prediction dApp" width="500">
+    <img src="https://github.com/bark-community/prediction-platform/blob/4bf0941e80c8c8d7d904e428edb0bd05b0c20e73/github/header.png" alt="BARK Prediction dApp" width="500">
 </div>
-
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
