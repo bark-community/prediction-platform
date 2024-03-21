@@ -1,5 +1,5 @@
 {
-  "name": "prediction-dapp",
+  "name": "bark-prediction-dapp",
   "version": "1.0.0",
   "description": "The BARK Prediction Platform dApp stands as a beacon of innovation within the decentralized application landscape, harnessing the robust capabilities of the Solana blockchain to redefine prediction markets.",
   "private": true,
@@ -27,6 +27,7 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@radix-ui/react-checkbox": "^1.0.4",
     "@solana/spl-token": "^0.4.1",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
@@ -34,19 +35,19 @@
     "@solana/wallet-adapter-solflare": "^0.6.28",
     "@solana/wallet-adapter-wallets": "^0.19.32",
     "@solana/web3.js": "^1.91.1",
-    "@tanstack/react-query": "^5.28.4",
-    "@tanstack/react-table": "^8.13.2",
+    "@tanstack/react-query": "^5.28.6",
+    "@tanstack/react-table": "^8.14.0",
     "@vercel/speed-insights": "^1.0.10",
     "bs58": "^5.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "jotai": "^2.7.1",
-    "lucide-react": "^0.358.0",
+    "lucide-react": "^0.359.0",
     "next": "latest",
     "next-themes": "^0.3.0",
     "react": "latest",
     "react-dom": "latest",
-    "sonner": "^1.4.3",
+    "sonner": "^1.4.41",
     "superstruct": "^1.0.4",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7"
@@ -58,8 +59,8 @@
     "autoprefixer": "^10.4.18",
     "eslint": "^8.57.0",
     "eslint-config-next": "latest",
-    "postcss": "^8.4.36",
+    "postcss": "^8.4.38",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   }
 }
