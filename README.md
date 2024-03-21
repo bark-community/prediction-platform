@@ -7,7 +7,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [ToDO: Jupiter Terminal V2](#todo-jupiter-terminal-v2)
-- [ToDo: Documentation](#todo-documentation)
+- [Documentation](#documentation)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -16,7 +16,7 @@ Welcome to BARK Prediction dApp! This decentralized application (dApp) built on 
 
 ## Features:
 - **Prediction Markets:** Participate in prediction markets on various assets.
-- **Real-time Price Feeds:** Access up-to-date asset prices including SOL, BARK, BTC, ETH, and more.
+- **Real-time Price Feeds:** Access up-to-date asset prices including SOL, BARK, USDC, BTC, ETH, and more.
 - **Token Swapping:** Seamlessly swap tokens across different clusters. Swap tokens using Jupiter Terminal V2 - Works only mainnet and need custom RPC or Jupiter API.
 - **Account Management:** View balance, transaction history, and more.
 - **Donation Functionality:** Contribute to charitable causes directly from the dApp.
@@ -70,8 +70,8 @@ To integrate token swapping using Jupiter Terminal V2, which works only on the m
 7. **Documentation and Support**: Document the token swapping feature within prediction dApp, including usage instructions and any prerequisites. Provide support resources or assistance channels for users who may encounter difficulties during the token swapping process.
 
 
-## ToDo: Documentation
-For detailed project documentation, please visit [Project Documentation](https://github.com/bark-community/prediction-platform/blob/main/docs/).
+## Documentation
+For detailed project documentation, please visit [Documentation](https://github.com/bark-community/prediction-platform/blob/main/docs/).
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to the BARK Prediction dApp, please follow these steps:

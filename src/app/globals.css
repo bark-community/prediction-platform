@@ -1,3 +1,46 @@
+/* Define color variables */
+:root {
+  --color-background: 0 0% 100%;
+  --color-foreground: 222.2 84% 4.9%;
+  /* Add more color variables as needed */
+}
+
+.dark {
+  --color-background: 222.2 84% 4.9%;
+  --color-foreground: 210 40% 98%;
+  /* Dark mode color variables */
+}
+
+/* Global styles */
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+  
+  * {
+    border-color: #E5E7EB; /* Use a consistent border color */
+  }
+}
+
+/* Button styles */
+.wallet-adapter-button-trigger,
+.wallet-adapter-button {
+  font-family: inherit;
+  background-color: rgb(17, 25, 39);
+  border-radius: 8px;
+  padding: 0.5rem 1rem; /* Adjust padding for better spacing */
+  height: 2.5rem;
+  /* Add more button styles as needed */
+}
+
+/* Dropdown list styles */
+.wallet-adapter-dropdown-list {
+  font-family: inherit;
+  /* Add dropdown list styles */
+}
+
+/* Tailwind base */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -68,19 +111,21 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--border);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
 .wallet-adapter-button-trigger {
-  background: rgb(17,25,39) !important;
+  background: rgb(17, 25, 39) !important;
   border-radius: 8px !important;
   padding-left: 16px !important;
   padding-right: 16px !important;
 }
+
 .wallet-adapter-dropdown-list,
 .wallet-adapter-button {
   font-family: inherit !important;
