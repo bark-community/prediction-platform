@@ -22,7 +22,7 @@ export function ExplorerLink({ path, label, className }: { path: string; label: 
       href={getExplorerUrl(path)}
       target="_blank"
       rel="noopener noreferrer"
-      className={className ? className : `link hover:text-blue-500`}
+      className={className || "link hover:text-grey-500"} // Simplified ternary to OR operator
     >
       {label}
     </a>
@@ -42,9 +42,8 @@ export function ClusterUiSelect() {
         {clusters.map((item) => (
           <DropdownMenuCheckboxItem
             key={item.name}
-            checked={item.name === cluster.name ? true : false}
-            onCheckedChange={setShowStatusBar}
-            onClick={() => setCluster(item)}
+            checked={item.name === cluster.name}
+            onCheckedChange={() => setCluster(item)} // Fixed to use setCluster
           >
             {item.name}
           </DropdownMenuCheckboxItem>
@@ -69,15 +68,15 @@ export function ClusterUiTable() {
       </TableHeader>
       <TableBody>
         {clusters.map((item) => (
-          <TableRow key={item.name} className={item?.active ? "bg-secondary" : ""}>
+          <TableRow key={item.name} className={item.active ? "bg-secondary" : ""}>
             <TableCell className="font-medium">
               <span className="text-lg">
-                {item?.active ? (
+                {item.active ? (
                   item.name
                 ) : (
                   <button
                     title="Select cluster"
-                    className="link link-secondary text-purple-500 underline"
+                    className="link link-secondary text-grey-500 underline"
                     onClick={() => setCluster(item)}
                   >
                     {item.name}
@@ -89,7 +88,7 @@ export function ClusterUiTable() {
             <TableCell>{item.endpoint}</TableCell>
             <TableCell className="text-right">
               <button
-                disabled={item?.active}
+                disabled={item.active}
                 className="btn btn-xs btn-default btn-outline"
                 onClick={() => {
                   if (!window.confirm("Are you sure?")) return;

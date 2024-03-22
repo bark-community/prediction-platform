@@ -10,11 +10,12 @@ import { ClusterUiSelect } from "../cluster/cluster-ui";
 
 const pages: { label: string; path: string }[] = [
   { label: "Account", path: "/account" },
-  { label: "Clusters", path: "/clusters" },
   { label: "Tokens", path: "/tokens" },
   { label: "Feeds", path: "/feeds" },
   { label: "Swap", path: "/swap" },
   { label: "Pools", path: "/pools" },
+  { label: "Donate", path: "/donate" },
+  { label: "Clusters", path: "/clusters" },
 ];
 
 export function NavBar() {

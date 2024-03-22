@@ -5,7 +5,6 @@ import { clusterApiUrl, Connection } from "@solana/web3.js";
 import { atom, useAtomValue, useSetAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { createContext, ReactNode, useContext } from "react";
-// import toast from "react-hot-toast";
 
 export interface Cluster {
   name: string;
@@ -48,7 +47,7 @@ export const defaultClusters: Cluster[] = [
   },
   {
     name: "mainnet",
-    endpoint: "https://necessary-damp-gadget.solana-mainnet.quiknode.pro/fc5b7b4702382c892c962f9f7b2278eceef3cb5f/",
+    endpoint: "https://api.mainnet-beta.solana.com", // Updated endpoint to start with `https:`
     network: ClusterNetwork.Mainnet,
   },
 ];
@@ -67,7 +66,6 @@ const activeClustersAtom = atom<Cluster[]>((get) => {
 
 const activeClusterAtom = atom<Cluster>((get) => {
   const clusters = get(activeClustersAtom);
-
   return clusters.find((item) => item.active) || clusters[0];
 });
 
@@ -88,25 +86,35 @@ export function ClusterProvider({ children }: { children: ReactNode }) {
   const setCluster = useSetAtom(clusterAtom);
   const setClusters = useSetAtom(clustersAtom);
 
-  const value: ClusterProviderContext = {
-    cluster,
-    clusters: clusters.sort((a, b) => (a.name > b.name ? 1 : -1)),
-    addCluster: (cluster: Cluster) => {
-      try {
-        new Connection(cluster.endpoint);
-        setClusters([...clusters, cluster]);
-      } catch (err) {
-        console.error(err);
-        // toast.error(`${err}`);
+  const addCluster = (cluster: Cluster) => {
+    try {
+      if (!cluster.endpoint.startsWith("http:") && !cluster.endpoint.startsWith("https:")) {
+        throw new Error("Endpoint URL must start with `http:` or `https:`.");
       }
-    },
-    deleteCluster: (cluster: Cluster) => {
-      setClusters(clusters.filter((item) => item.name !== cluster.name));
-    },
-    setCluster: (cluster: Cluster) => setCluster(cluster),
-    getExplorerUrl: (path: string) => `https://explorer.solana.com/${path}${getClusterUrlParam(cluster)}`,
+      new Connection(cluster.endpoint);
+      setClusters([...clusters, cluster]);
+    } catch (error) {
+      console.error("Failed to add cluster:", error);
+      // Handle error gracefully or provide user feedback
+    }
   };
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+
+  const deleteCluster = (cluster: Cluster) => {
+    setClusters(clusters.filter((item) => item.name !== cluster.name));
+  };
+
+  const setClusterHandler = (cluster: Cluster) => setCluster(cluster);
+
+  const getExplorerUrl = (path: string) => {
+    const cluster = activeClusterAtom.getState();
+    return `https://explorer.solana.com/${path}${getClusterUrlParam(cluster)}`;
+  };
+
+  return (
+    <Context.Provider value={{ cluster, clusters, addCluster, deleteCluster, setCluster: setClusterHandler, getExplorerUrl }}>
+      {children}
+    </Context.Provider>
+  );
 }
 
 export function useCluster() {
@@ -120,7 +128,7 @@ function getClusterUrlParam(cluster: Cluster): string {
       suffix = "devnet";
       break;
     case ClusterNetwork.Mainnet:
-      suffix = "mainnet";
+      suffix = "";
       break;
     case ClusterNetwork.Testnet:
       suffix = "testnet";
