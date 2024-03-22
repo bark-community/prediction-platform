@@ -1,3 +1,6 @@
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 /* Define color variables */
 :root {
   --color-background: 0 0% 100%;
@@ -26,17 +29,25 @@
 /* Button styles */
 .wallet-adapter-button-trigger,
 .wallet-adapter-button {
-  font-family: inherit;
+  font-family: 'Inter', Arial, sans-serif; /* Use Inter font with fallback */
   background-color: rgb(17, 25, 39);
-  border-radius: 8px;
-  padding: 0.5rem 1rem; /* Adjust padding for better spacing */
-  height: 2.5rem;
-  /* Add more button styles as needed */
+  border-radius: 6px; /* Increase border-radius for a more rounded look */
+  padding: 0.75rem 1.5rem; /* Increase padding for better spacing */
+  height: 3rem; /* Increase height for larger buttons */
+  color: #ffffff; /* Set text color to white */
+  border: none; /* Remove border */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.wallet-adapter-button-trigger:hover,
+.wallet-adapter-button:hover {
+  background-color: #001a33; /* Darken background color on hover */
 }
 
 /* Dropdown list styles */
 .wallet-adapter-dropdown-list {
-  font-family: inherit;
+  font-family: 'Inter', Arial, sans-serif; /* Use Inter font with fallback */
   /* Add dropdown list styles */
 }
 
@@ -121,7 +132,7 @@
 
 .wallet-adapter-button-trigger {
   background: rgb(17, 25, 39) !important;
-  border-radius: 8px !important;
+  border-radius: 6px !important;
   padding-left: 16px !important;
   padding-right: 16px !important;
 }
@@ -133,4 +144,36 @@
 
 .wallet-adapter-button {
   height: 2.5rem !important;
+}
+
+/* Dropdown list styles */
+.wallet-adapter-dropdown-list {
+  font-family: inherit;
+  /* Add dropdown list styles */
+}
+
+/* Container styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Footer styles */
+.footer {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adjust shadow for a softer effect */
+}
+
+/* Divider styles */
+.divider {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Use rgba for a more subtle border color */
+  margin-top: 20px;
 }
