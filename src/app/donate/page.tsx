@@ -25,7 +25,7 @@ const charities = [
   // Add more charities as needed
 ];
 
-export default function DonatePage() {
+const DonatePage = () => {
   const wallet = useWallet();
   const { cluster } = useCluster();
   const [donationAmount, setDonationAmount] = useState(0);
@@ -39,21 +39,20 @@ export default function DonatePage() {
     fetchExchangeRates();
   }, [selectedCurrency]);
 
-  const fetchExchangeRates = () => {
+  const fetchExchangeRates = async () => {
     setLoading(true);
-    fetch(EXCHANGE_RATE_API)
-      .then((response) => response.json())
-      .then((data) => {
-        const exchangeRates = data.rates;
-        const usdRate = exchangeRates[selectedCurrency];
-        setUsdEquivalent(donationAmount / usdRate);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching exchange rates:", error);
-        setError("Error fetching exchange rates");
-        setLoading(false);
-      });
+    try {
+      const response = await fetch(EXCHANGE_RATE_API);
+      const data = await response.json();
+      const exchangeRates = data.rates;
+      const usdRate = exchangeRates[selectedCurrency];
+      setUsdEquivalent(donationAmount / usdRate);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching exchange rates:", error);
+      setError("Error fetching exchange rates");
+      setLoading(false);
+    }
   };
 
   const handleDonation = () => {
@@ -86,12 +85,17 @@ export default function DonatePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-semibold mb-4">Donate</h1>
-      <p className="text-lg mb-4">Your donation will help support various charitable organizations and causes around the world.</p>
+      <hr className="mb-6 divider" /> {/* Divider */}
+      <p className="text-lg mb-4">
+        Welcome to BARK donation, please fill out the form below. Your donation will help support various charitable organizations and causes around the world.
+      </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-4">Donation Details</h2>
           <div className="mb-4">
-            <label className="block text-gray-700 mb-1">Amount ({currencies.find(cur => cur.symbol === selectedCurrency).name})</label>
+            <label className="block text-gray-700 mb-1">
+              Choose donation amount ({currencies.find((cur) => cur.symbol === selectedCurrency).name})
+            </label>
             <input
               type="number"
               className="border border-gray-300 rounded-md w-full py-2 px-3"
@@ -119,36 +123,39 @@ export default function DonatePage() {
             <select
               className="border border-gray-300 rounded-md w-full py-2 px-3"
               value={selectedCharity}
-              onChange={(e) => setSelectedCharity(e.target.value)}
-            >
-              <option value="">Select Charity</option>
-              {charities.map((charity) => (
-                <option key={charity.address} value={charity.address}>
-                  {charity.name}
-                </option>
-              ))}
-            </select>
+              onChange={(e) => setSelectedCharity(e.target.value
+                )}
+                >
+                  <option value="">Choose a donation type</option>
+                  {charities.map((charity) => (
+                    <option key={charity.address} value={charity.address}>
+                      {charity.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button
+                className={`bg-primary text-white py-2 px-4 rounded-md mr-2 ${loading || !selectedCharity || donationAmount <= 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-dark'}`}
+                onClick={handleDonation}
+                disabled={loading || !selectedCharity || donationAmount <= 0}
+              >
+                {loading ? "Donating..." : "Go to checkout"}
+              </button>
+              <button
+                className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700 dark:bg-gray-800"
+                onClick={handleCancel}
+              >
+                Cancel
+              </button>
+              {error && <p className="text-red-500 mt-2">{error}</p>}
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h2 className="text-xl font-semibold mb-4">USDC Equivalent</h2>
+              <p className="text-lg font-semibold">{usdEquivalent.toFixed(2)} USDC</p>
+            </div>
           </div>
-          <button
-            className={`bg-primary text-white py-2 px-4 rounded-md mr-2 ${loading || !selectedCharity || donationAmount <= 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-dark'}`}
-            onClick={handleDonation}
-            disabled={loading || !selectedCharity || donationAmount <= 0}
-          >
-            {loading ? "Donating..." : "Donate"}
-          </button>
-          <button
-            className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700 dark:bg-gray-800"
-            onClick={handleCancel}
-          >
-            Cancel
-          </button>
-          {error && <p className="text-red-500 mt-2">{error}</p>}
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4">USDC Equivalent</h2>
-          <p className="text-lg font-semibold">{usdEquivalent.toFixed(2)} USDC</p>
-        </div>
-      </div>
-    </div>
-  );
-}
+      );
+    };
+    
+    export default DonatePage;
