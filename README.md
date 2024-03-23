@@ -6,7 +6,8 @@
 - [Features:](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [ToDO: Jupiter Terminal V2](#todo-jupiter-terminal-v2)
+  - [Users are able to:](#users-are-able-to)
+- [Jupiter Terminal V2](#jupiter-terminal-v2)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
 - [License](#license)
@@ -51,9 +52,25 @@ To install and run the BARK Prediction dApp locally, follow these steps:
 ## Usage
 Once the dApp is running, you can start exploring the prediction markets, accessing real-time price feeds, managing your account, and contributing to charitable causes directly from the interface. Follow the on-screen instructions to navigate through the features and functionalities of the dApp.
 
-## ToDO: Jupiter Terminal V2
+### Users are able to:
 
-To integrate token swapping using Jupiter Terminal V2, which works only on the mainnet and requires a custom RPC or Jupiter API.
+1. Users can now connect to the app with their crypto wallet using the Solana Wallet Adapter.
+2. Implemented functionality to create and mint basic SPL tokens.
+3. Added support for creating and minting tokens with metadata using Metaplex MPL-Token-Metadata.
+4. Users can now connect to all available Chainlink Price Feeds and view real-time price updates on the Devnet for assets like SOL, BTC, ETH, LINK, USDC, and USDT.
+5. Enabled token swapping functionality using Jupiter Terminal V2.
+6. Implemented the ability for users to switch between different clusters: Devnet, Local, Testnet, and Mainnet.
+7. Users can now view their SOL account balance within the app.
+8. Added functionality for users to view their transaction history.
+9. Users can now open transaction details in the block explorer directly from the app.
+10. Implemented a feature for users to request an airdrop on the Devnet.
+11. Added functionality for users to send SOL to other addresses.
+12. Implemented the ability for users to copy their address to the clipboard for requesting SOL.
+
+
+## Jupiter Terminal V2
+
+To integrate token swapping using Jupiter Terminal V2, which works only on the mainnet.
 
 1. **Integration with Jupiter Terminal V2 API**: Incorporate the Jupiter Terminal V2 API into your application to enable token swapping functionality. You'll need to make API requests to perform token swaps, so ensure you have the necessary endpoints and authentication tokens.
 

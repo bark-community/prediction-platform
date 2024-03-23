@@ -1,6 +1,6 @@
 {
   "name": "prediction-dapp",
-  "version": "1.0.0",
+  "version": "1.0.0-beta",
   "description": "The BARK Prediction Platform dApp stands as a beacon of innovation within the decentralized application landscape, harnessing the robust capabilities of the Solana blockchain to redefine prediction markets.",
   "private": true,
   "scripts": {
@@ -27,7 +27,7 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.7",
-    "@solana/spl-token": "^0.4.1",
+    "@solana/spl-token": "^0.4.2",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
     "@solana/wallet-adapter-react-ui": "^0.9.35",
