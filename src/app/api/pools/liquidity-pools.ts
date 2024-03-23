@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Define the endpoint for fetching liquidity pool data
-const LIQUIDITY_POOLS_API_URL = 'https://api.barkprotocol.net/liquidity-pools';
+const LIQUIDITY_POOLS_API_URL = 'https://api.example.com/liquidity-pools';
 
 // Define the cache for storing fetched liquidity pool data
 let liquidityPoolCache: LiquidityPool[] | null = null;

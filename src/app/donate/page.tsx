@@ -2,20 +2,21 @@
 import React, { useState, useEffect } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useCluster } from "@/components/cluster/cluster-data-access";
-import { FaDollarSign, FaEuroSign, FaBitcoin, FaEthereum, FaLink, FaMoneyBillAlt } from 'react-icons/fa';
+import { icon } from "../assets/icon";
 
 const EXCHANGE_RATE_API = "https://api.exchangerate-api.com/v4/latest/USD";
 
 const currencies = [
-  { symbol: "USD", icon: <FaDollarSign />, name: "US Dollar" },
-  { symbol: "EUR", icon: <FaEuroSign />, name: "Euro" },
-  { symbol: "BTC", icon: <FaBitcoin />, name: "Bitcoin" },
-  { symbol: "ETH", icon: <FaEthereum />, name: "Ethereum" },
-  { symbol: "SOL", icon: <FaEthereum />, name: "Solana" },
-  { symbol: "LINK", icon: <FaLink />, name: "Chainlink" },
-  { symbol: "BARK", icon: <FaMoneyBillAlt />, name: "BARK" },
-  { symbol: "USDC", icon: <FaDollarSign />, name: "USD Coin" },
-  { symbol: "EURC", icon: <FaEuroSign />, name: "EUR Coin" },
+  { symbol: "USD", name: "US Dollar", icon: "./public/usd.svg" },
+  { symbol: "EUR", name: "Euro", icon: "./public/eur.svg" },
+  { symbol: "SOL", name: "Solana", Icon: "./public/solana.svg" },
+  { symbol: "BARK", name: "BARK", icon: "./public/bark.svg" },
+  { symbol: "BTC", name: "Bitcoin", icon: "./public/bitcoin.svg" },
+  { symbol: "ETH", name: "Ethereum", icon: "./public/ethereum.svg" },
+  { symbol: "LINK", name: "Chainlink", icon: "./public/chainlink.svg" },
+  { symbol: "USDC", name: "USD Coin", icon: "./public/usdc.svg" },
+  { symbol: "EURC", name: "EUR Coin", icon: "./public/eurc.svg" },
+  { symbol: "USDT", name: "Tether", icon: "./public/tether.svg" },
 ];
 
 const charities = [
@@ -29,7 +30,7 @@ const DonatePage = () => {
   const wallet = useWallet();
   const { cluster } = useCluster();
   const [donationAmount, setDonationAmount] = useState(0);
-  const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const [selectedCurrency, setSelectedCurrency] = useState("USDC");
   const [selectedCharity, setSelectedCharity] = useState("");
   const [usdEquivalent, setUsdEquivalent] = useState(0);
   const [error, setError] = useState("");
@@ -85,17 +86,12 @@ const DonatePage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-semibold mb-4">Donate</h1>
-      <hr className="mb-6 divider" /> {/* Divider */}
-      <p className="text-lg mb-4">
-        Welcome to BARK donation, please fill out the form below. Your donation will help support various charitable organizations and causes around the world.
-      </p>
+      <p className="text-lg mb-4">Welcome to BARK donation, please fill out the form below. Your donation will help support various charitable organizations and causes around the world.</p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-4">Donation Details</h2>
           <div className="mb-4">
-            <label className="block text-gray-700 mb-1">
-              Choose donation amount ({currencies.find((cur) => cur.symbol === selectedCurrency).name})
-            </label>
+            <label className="block text-gray-700 mb-1">Choose donation amount ({currencies.find(cur => cur.symbol === selectedCurrency).name})</label>
             <input
               type="number"
               className="border border-gray-300 rounded-md w-full py-2 px-3"
@@ -123,39 +119,38 @@ const DonatePage = () => {
             <select
               className="border border-gray-300 rounded-md w-full py-2 px-3"
               value={selectedCharity}
-              onChange={(e) => setSelectedCharity(e.target.value
-                )}
-                >
-                  <option value="">Choose a donation type</option>
-                  {charities.map((charity) => (
-                    <option key={charity.address} value={charity.address}>
-                      {charity.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <button
-                className={`bg-primary text-white py-2 px-4 rounded-md mr-2 ${loading || !selectedCharity || donationAmount <= 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-dark'}`}
-                onClick={handleDonation}
-                disabled={loading || !selectedCharity || donationAmount <= 0}
-              >
-                {loading ? "Donating..." : "Go to checkout"}
-              </button>
-              <button
-                className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700 dark:bg-gray-800"
-                onClick={handleCancel}
-              >
-                Cancel
-              </button>
-              {error && <p className="text-red-500 mt-2">{error}</p>}
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">USDC Equivalent</h2>
-              <p className="text-lg font-semibold">{usdEquivalent.toFixed(2)} USDC</p>
-            </div>
+              onChange={(e) => setSelectedCharity(e.target.value)}
+            >
+              <option value="">Choose a donation type</option>
+              {charities.map((charity) => (
+                <option key={charity.address} value={charity.address}>
+                  {charity.name}
+                </option>
+              ))}
+            </select>
           </div>
+          <button
+            className={`bg-primary text-white py-2 px-4 rounded-md mr-2 ${loading || !selectedCharity || donationAmount <= 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-dark'}`}
+            onClick={handleDonation}
+            disabled={loading || !selectedCharity || donationAmount <= 0}
+          >
+            {loading ? "Donating..." : "Go to checkout"}
+          </button>
+          <button
+            className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700 dark:bg-gray-800"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          {error && <p className="text-red-500 mt-2">{error}</p>}
         </div>
-      );
-    };
-    
-    export default DonatePage;
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4">USDC Equivalent</h2>
+          <p className="text-lg font-semibold">{usdEquivalent.toFixed(2)} USDC</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DonatePage;

@@ -1,3 +1,5 @@
+"use client";
+
 import { ClusterUiTable } from "./cluster-ui";
 import { useEffect, useState } from "react";
 
@@ -8,7 +10,8 @@ export default function ClusterFeature() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch clusters data here
+        // Simulate fetching clusters data
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate a delay of 2 seconds
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch clusters:", error);
