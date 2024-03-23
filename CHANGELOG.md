@@ -14,6 +14,9 @@ All notable changes to the BARK Prediction dApp MVP (Minimum Viable Product) bet
 - Enabled token swapping feature using Jupiter Terminal V2.
 - Integrated BARK token for basic staking and governance.
 
+## Fixes
+- Fixed broken code and several bugs
+
 ### Changed
 - Updated backend logic and smart contracts for improved functionality.
 - Enhanced user interface design and layout for better usability.
