@@ -37,13 +37,13 @@ To install and run the BARK Prediction dApp locally, follow these steps:
 2. Install dependencies:
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. Start the development server:
 
    ```bash
-   npm start
+   pnpm dev
    ```
 
 4. Visit `http://localhost:3000` in your browser to access the dApp.

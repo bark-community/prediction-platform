@@ -17,7 +17,7 @@ export default function JupiterSwap() {
       window.Jupiter.init({
         displayMode: "integrated",
         integratedTargetId: "integrated-terminal",
-        endpoint: "https://neat-hidden-sanctuary.solana-mainnet.discover.quiknode.pro/2af5315d336f9ae920028bbb90a73b724dc1bbed/",
+        endpoint: "",
         enableWalletPassthrough: true,
         formProps: {
           fixedOutputMint: false,
@@ -59,7 +59,7 @@ export default function JupiterSwap() {
       ) : (
         <div className="bg-background px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="mt-5 text-lg leading-8 text-grey-500">
+            <p className="mt-6 text-lg leading-8 text-grey-500">
               Make sure your wallet is not in testnet mode and change cluster to mainnet
             </p>
           </div>

@@ -76,7 +76,7 @@ export function useTransferSol({ address }: { address: PublicKey }) {
   const client = useQueryClient();
 
   return useMutation({
-    mutationKey: ["Transfer SOL", { endpoint: connection.rpcEndpoint, address }],
+    mutationKey: ["transfer-sol", { endpoint: connection.rpcEndpoint, address }],
     mutationFn: async (input: { destination: PublicKey; amount: number }) => {
       let signature: TransactionSignature = "";
       try {

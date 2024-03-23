@@ -269,7 +269,7 @@ function CreateTokenWithMetadataModal({ address }: { address: PublicKey }) {
           </div> */}
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="uri" className="text-right">
-              URI
+              Uri
             </Label>
             <Input
               type="text"

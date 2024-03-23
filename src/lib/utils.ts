@@ -68,3 +68,13 @@ export async function enhanceAccountsWithMintAuthority(
 
   return enhancedAccounts;
 }
+
+export function formatPercentage(value: string): string {
+  const numericValue = parseFloat(value);
+
+  // Round up if the third decimal digit is >= 5
+  const roundedValue = Math.round(numericValue * 100) / 100;
+
+  // Format with two decimal places and append the percentage symbol
+  return `${roundedValue.toFixed(2)}%`;
+}

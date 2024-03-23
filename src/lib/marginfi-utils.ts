@@ -14,6 +14,7 @@ import { Infer, array, assert, object, string } from "superstruct";
 export interface BankSnapshot {
   bankAddress: string; // (base58)
   tokenSymbol: string; // short-form name / ticker
+  tokenPrice: number; // ($)
   tokenName: string; // long-form name
   lendingRate: number; // (%)
   borrowingRate: number; // (%)
@@ -54,6 +55,7 @@ export interface UserPosition {
 export function shapeBank(bank: Bank, bankMetadata: BankMetadata): BankSnapshot {
   return {
     tokenSymbol: bankMetadata.tokenSymbol,
+    tokenPrice: bank.getPrice().toNumber(),
     tokenName: bankMetadata.tokenName,
     bankAddress: bank.publicKey.toBase58(),
     lendingRate: bank.getInterestRates().lendingRate.times(100).toNumber(),
