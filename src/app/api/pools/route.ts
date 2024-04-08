@@ -6,7 +6,7 @@ import { loadBankMetadatas, shapeBank, shapeUserAccount } from "@/lib/marginfi-u
 export async function GET(request: Request) {
   try {
     // const rpcEndpoint = "https://rpc-public.hellomoon.io";
-    // const rpcEndpoint = "https://api.mainnet-beta.solana.com";
+    //   const rpcEndpoint = "https://api.mainnet-beta.solana.com";
     const rpcEndpoint = process.env.RPC_ENDPOINT || "";
     const connection = new Connection(rpcEndpoint, "confirmed");
     const clientConfig = await getConfig("production");

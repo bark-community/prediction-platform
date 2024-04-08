@@ -49,7 +49,7 @@ export default function RootLayout({
               {/* GitHub */}
               <a href="https://github.com/bark-community/prediction-platform" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700"><FaGithub /></a>
               {/* Discord */}
-              <a href="https://discord.com/example" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700"><FaDiscord /></a>
+              <a href="https://discord.gg/QY9NvRYz" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700"><FaDiscord /></a>
               {/* Twitter */}
               <a href="https://x.com/bark_protocol" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700"><FaTwitter /></a>
             </div>
