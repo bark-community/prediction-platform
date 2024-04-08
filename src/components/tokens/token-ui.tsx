@@ -48,7 +48,7 @@ export function TokenAccounts({ address }: { address: PublicKey }) {
         <div className="mx-auto max-w-2xl py-5 sm:py-8 lg:py-9">
           <div className="text-center">
             <h3 className="text-2xl font-bold tracking-tight text-primary sm:text-3xl cursor-pointer">
-              SPL Token Generator
+              Token Playground
             </h3>
             <div className="mt-4 flex items-center justify-center gap-x-6">
               <Button type="button" variant="outline" size="sm" onClick={handleCreateToken}>

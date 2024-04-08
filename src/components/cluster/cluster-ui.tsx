@@ -22,7 +22,7 @@ export function ExplorerLink({ path, label, className }: { path: string; label: 
       href={getExplorerUrl(path)}
       target="_blank"
       rel="noopener noreferrer"
-      className={className ? className : `link hover:text-purple-500`}
+      className={className ? className : `link hover:text-grey-500`}
     >
       {label}
     </a>
@@ -77,7 +77,7 @@ export function ClusterUiTable() {
                 ) : (
                   <button
                     title="Select cluster"
-                    className="link link-secondary text-purple-500 underline"
+                    className="link link-secondary text-grey-500 underline"
                     onClick={() => setCluster(item)}
                   >
                     {item.name}

@@ -4,6 +4,8 @@ All notable changes to the BARK Prediction dApp MVP (Minimum Viable Product) bet
 
 ## [Unreleased]
 
+## 0.
+
 ## [0.1.0-beta] - 2024-04-10
 ### Added
 - Initial beta release of the BARK Prediction dApp MVP.
