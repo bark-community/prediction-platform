@@ -25,11 +25,11 @@ const feeds = [
     address: "99B2bTijsU6f1GCT73HmdR7HCFFjGMBcPZY6jZ96ynrR",
   },
   {
-      iconURL: "/bark.svg",
+  iconURL: "/bark.svg",
       symbol: "BARK",
       name: "BARK",
       price: "",
-      address: "BARKhLzdWbyZiP3LNoD9boy7MrAy4CVXEToDyYGeEBKF",
+      address: "GsFjUCEsRwXHyahR8XsnnJYrgxBjADwnNJ1wbJbGdMVK",
   },
   {
     iconURL: "/bitcoin.svg",

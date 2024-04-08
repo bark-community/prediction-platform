@@ -1,10 +1,10 @@
 "use client";
 
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { clusterApiUrl, Connection } from "@solana/web3.js";
+import React, { createContext, ReactNode, useContext } from "react";
 import { atom, useAtomValue, useSetAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
-import { createContext, ReactNode, useContext } from "react";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import { clusterApiUrl, Connection } from "@solana/web3.js";
 import toast from "react-hot-toast";
 
 export interface Cluster {
@@ -40,7 +40,11 @@ export const defaultClusters: Cluster[] = [
     endpoint: clusterApiUrl("devnet"),
     network: ClusterNetwork.Devnet,
   },
-  { name: "local", endpoint: "http://localhost:8899" },
+  { 
+    name: "local", 
+    endpoint: "http://localhost:8899",
+    network: ClusterNetwork.Custom, // Added for consistency
+  },
   {
     name: "testnet",
     endpoint: clusterApiUrl("testnet"),
@@ -48,7 +52,7 @@ export const defaultClusters: Cluster[] = [
   },
   {
     name: "mainnet",
-    endpoint: "",
+    endpoint: clusterApiUrl("mainnet-beta"),
     network: ClusterNetwork.Mainnet,
   },
 ];
@@ -67,7 +71,6 @@ const activeClustersAtom = atom<Cluster[]>((get) => {
 
 const activeClusterAtom = atom<Cluster>((get) => {
   const clusters = get(activeClustersAtom);
-
   return clusters.find((item) => item.active) || clusters[0];
 });
 
@@ -91,21 +94,27 @@ export function ClusterProvider({ children }: { children: ReactNode }) {
   const value: ClusterProviderContext = {
     cluster,
     clusters: clusters.sort((a, b) => (a.name > b.name ? 1 : -1)),
-    addCluster: (cluster: Cluster) => {
+    addCluster: (newCluster: Cluster) => {
       try {
-        new Connection(cluster.endpoint);
-        setClusters([...clusters, cluster]);
+        new Connection(newCluster.endpoint); // Attempt to connect to the new cluster
+        setClusters((prev) => [...prev, newCluster]);
+        toast.success(`${newCluster.name} cluster added successfully.`);
       } catch (err) {
         console.error(err);
-        // toast.error(`${err}`);
+        toast.error(`Failed to add ${newCluster.name} cluster.`);
       }
     },
-    deleteCluster: (cluster: Cluster) => {
-      setClusters(clusters.filter((item) => item.name !== cluster.name));
+    deleteCluster: (targetCluster: Cluster) => {
+      setClusters((prev) => prev.filter((item) => item.name !== targetCluster.name));
+      toast.success(`${targetCluster.name} cluster removed.`);
     },
-    setCluster: (cluster: Cluster) => setCluster(cluster),
+    setCluster: (selectedCluster: Cluster) => {
+      setCluster(selectedCluster);
+      toast.success(`Switched to ${selectedCluster.name} cluster.`);
+    },
     getExplorerUrl: (path: string) => `https://explorer.solana.com/${path}${getClusterUrlParam(cluster)}`,
   };
+
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
@@ -129,6 +138,5 @@ function getClusterUrlParam(cluster: Cluster): string {
       suffix = `custom&customUrl=${encodeURIComponent(cluster.endpoint)}`;
       break;
   }
-
   return suffix.length ? `?cluster=${suffix}` : "";
 }
