@@ -1,4 +1,6 @@
 "use client";
+
+import React from 'react';
 import { Disclosure } from "@headlessui/react";
 import { X, Menu } from "lucide-react";
 import { WalletButton } from "@/providers/solana-provider";
@@ -8,8 +10,22 @@ import { usePathname } from "next/navigation";
 import { ModeToggle } from "./mode-toggle";
 import { ClusterUiSelect } from "../cluster/cluster-ui";
 
-// Define the pages constant outside of the component function
-const pages: { label: string; path: string }[] = [
+// NavigationLink component for reusability
+const NavigationLink = ({ label, path, pathname }) => (
+  <Link href={path} passHref legacyBehavior>
+    <a
+      className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+        pathname.startsWith(path)
+          ? "border-b-2 border-primary text-primary"
+          : "border-b-2 border-transparent text-primary hover:border-secondary hover:text-gray-500"
+      }`}
+    >
+      {label}
+    </a>
+  </Link>
+);
+
+const pages = [
   { label: "Account", path: "/account" },
   { label: "Tokens", path: "/tokens" },
   { label: "Feeds", path: "/feeds" },
@@ -26,71 +42,36 @@ export function NavBar() {
     <Disclosure as="nav" className="bg-background">
       {({ open }) => (
         <>
-          <div className="flex h-16 justify-between">
-            <div className="flex">
-              <div className="-ml-2 mr-2 flex items-center md:hidden">
-                {/* Mobile menu button */}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-primary hover:bg-secondary hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-ring">
-                  <span className="absolute -inset-0.5" />
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <X className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <Menu className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
-              <div className="flex flex-shrink-0 items-center">
-                <Link
-                  className="flex items-center space-x-3 rtl:space-x-reverse"
-                  href="/"
-                  legacyBehavior>
-                  <Image src="/bark-logo-dark.svg" alt="Bark Logo" width={100} height={100} priority />
+          <div className="flex h-16 justify-between items-center">
+            <div className="flex items-center">
+              <Disclosure.Button className="inline-flex items-center justify-center p-2 text-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+                <span className="sr-only">Open main menu</span>
+                {open ? <X className="block h-6 w-6" aria-hidden="true" /> : <Menu className="block h-6 w-6" aria-hidden="true" />}
+              </Disclosure.Button>
+              <div className="flex-shrink-0">
+                <Link href="/" passHref>
+                  <a>
+                    <Image src="/bark-logo-dark.svg" alt="Bark Logo" width={100} height={100} priority />
+                  </a>
                 </Link>
               </div>
-              <div className="hidden md:ml-3 md:flex md:space-x-6">
-                {pages.map(({ label, path }) => (
-                  <Link
-                    key={path}
-                    className={
-                      pathname.startsWith(path)
-                        ? "inline-flex items-center border-b-2 border-primary px-1 pt-1 text-sm font-medium text-primary"
-                        : "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-primary hover:border-secondary hover:text-gray-500"
-                    }
-                    href={path}
-                    legacyBehavior>
-                    {label}
-                  </Link>
+              <div className="hidden md:ml-6 md:flex md:space-x-8">
+                {pages.map((page) => (
+                  <NavigationLink key={page.path} {...page} pathname={pathname} />
                 ))}
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="flex-shrink-0">
-                <WalletButton />
-              </div>
-              <div className="flex-shrink-0">
-                <ClusterUiSelect />
-              </div>
-              <div className="flex-shrink-0">
-                <ModeToggle />
-              </div>
+            <div className="flex items-center gap-4">
+              <WalletButton />
+              <ClusterUiSelect />
+              <ModeToggle />
             </div>
           </div>
 
           <Disclosure.Panel className="md:hidden">
-            <div className="space-y-1 pb-3 pt-2">
-              {pages.map(({ label, path }) => (
-                <Link
-                  key={path}
-                  className={
-                    pathname.startsWith(path)
-                      ? "block border-l-4 border-primary bg-secondary py-2 pl-3 pr-4 text-base font-medium text-primary sm:pl-5 sm:pr-6"
-                      : "block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-primary hover:border-primary hover:bg-secondary hover:text-gray-500 sm:pl-5 sm:pr-6"
-                  }
-                  href={path}
-                  legacyBehavior>
-                  {label}
-                </Link>
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {pages.map((page) => (
+                <NavigationLink key={page.path} {...page} pathname={pathname} />
               ))}
             </div>
           </Disclosure.Panel>
