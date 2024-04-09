@@ -40,7 +40,10 @@ export function NavBar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-shrink-0 items-center">
-                <Link className="flex items-center space-x-3 rtl:space-x-reverse" href="/">
+                <Link
+                  className="flex items-center space-x-3 rtl:space-x-reverse"
+                  href="/"
+                  legacyBehavior>
                   <Image className="w-auto h-8" alt="Bark Logo" src="/bark-logo-dark.svg" width={48} height={48} priority />
                 </Link>
               </div>
@@ -54,7 +57,7 @@ export function NavBar() {
                         : "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-primary hover:border-secondary hover:text-gray-500"
                     }
                     href={path}
-                  >
+                    legacyBehavior>
                     {label}
                   </Link>
                 ))}
@@ -84,7 +87,7 @@ export function NavBar() {
                       : "block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-primary hover:border-primary hover:bg-secondary hover:text-gray-500 sm:pl-5 sm:pr-6"
                   }
                   href={path}
-                >
+                  legacyBehavior>
                   {label}
                 </Link>
               ))}
