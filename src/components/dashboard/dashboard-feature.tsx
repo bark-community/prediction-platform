@@ -15,7 +15,7 @@ export default function DashboardFeature() {
           Unleash Predictive Insights on Solana
         </p>
         <nav className="mt-8 flex justify-center gap-4">
-          <Link href="/doc" passHref>
+          <Link href="https://doc.barkprotocol.net" passHref>
             <a className="px-5 py-3 bg-primary text-white rounded-lg shadow hover:bg-primary-dark transition-colors">
               Document
             </a>
