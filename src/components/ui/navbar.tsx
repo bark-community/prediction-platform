@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { ModeToggle } from "./mode-toggle";
 import { ClusterUiSelect } from "../cluster/cluster-ui";
 
+// Define the pages constant outside of the component function
 const pages: { label: string; path: string }[] = [
   { label: "Account", path: "/account" },
   { label: "Tokens", path: "/tokens" },
@@ -44,7 +45,7 @@ export function NavBar() {
                   className="flex items-center space-x-3 rtl:space-x-reverse"
                   href="/"
                   legacyBehavior>
-                  <Image className="w-auto h-8" alt="Bark Logo" src="/bark-logo-dark.svg" width={48} height={48} priority />
+                  <Image src="/bark-logo-dark.svg" alt="Bark Logo" width={100} height={100} priority />
                 </Link>
               </div>
               <div className="hidden md:ml-3 md:flex md:space-x-6">

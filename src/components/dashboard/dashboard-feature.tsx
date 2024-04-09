@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function DashboardFeature() {
   return (
@@ -13,14 +14,18 @@ export default function DashboardFeature() {
         <p className="mt-6 text-base sm:text-lg leading-8 text-gray-500">
           Unleash Predictive Insights on Solana
         </p>
-        <div className="mt-8">
-          <a href="/doc" className="px-5 py-3 bg-primary text-white rounded-lg shadow hover:bg-primary-dark transition-colors">
-            Document
-          </a>
-          <a href="/make-prediction" className="ml-4 px-5 py-3 border border-primary text-primary rounded-lg shadow hover:bg-gray-100 transition-colors">
-            Make a Prediction
-          </a>
-        </div>
+        <nav className="mt-8 flex justify-center gap-4">
+          <Link href="/doc" passHref>
+            <a className="px-5 py-3 bg-primary text-white rounded-lg shadow hover:bg-primary-dark transition-colors">
+              Document
+            </a>
+          </Link>
+          <Link href="/make-prediction" passHref>
+            <a className="px-5 py-3 border border-primary text-primary rounded-lg shadow hover:bg-gray-100 transition-colors">
+              Make a Prediction
+            </a>
+          </Link>
+        </nav>
       </div>
     </section>
   );
