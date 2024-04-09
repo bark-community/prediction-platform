@@ -50,9 +50,9 @@ export function NavBar() {
               </Disclosure.Button>
               <div className="flex-shrink-0">
                 <Link href="/" passHref>
-                  <a>
-                    <Image src="/bark-logo-dark.svg" alt="Bark Logo" width={100} height={100} priority />
-                  </a>
+
+                  <Image src="/bark-logo-dark.svg" alt="Bark Logo" width={100} height={100} priority />
+
                 </Link>
               </div>
               <div className="hidden md:ml-6 md:flex md:space-x-8">
