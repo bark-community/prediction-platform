@@ -43,7 +43,7 @@ export const defaultClusters: Cluster[] = [
   { 
     name: "local", 
     endpoint: "http://localhost:8899",
-    network: ClusterNetwork.Custom, // Added for consistency
+    network: ClusterNetwork.Custom,
   },
   {
     name: "testnet",
@@ -96,7 +96,7 @@ export function ClusterProvider({ children }: { children: ReactNode }) {
     clusters: clusters.sort((a, b) => (a.name > b.name ? 1 : -1)),
     addCluster: (newCluster: Cluster) => {
       try {
-        new Connection(newCluster.endpoint); // Attempt to connect to the new cluster
+        new Connection(newCluster.endpoint);
         setClusters((prev) => [...prev, newCluster]);
         toast.success(`${newCluster.name} cluster added successfully.`);
       } catch (err) {
