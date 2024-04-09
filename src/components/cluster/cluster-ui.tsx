@@ -1,7 +1,6 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useCluster } from "./cluster-data-access";
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,9 +11,7 @@ import {
 import { Trash2 } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-type Checked = DropdownMenuCheckboxItemProps["checked"];
-
-export function ExplorerLink({ path, label, className }: { path: string; label: string; className?: string }) {
+export function ExplorerLink({ path, label, className }) {
   const { getExplorerUrl } = useCluster();
 
   return (
@@ -30,7 +27,7 @@ export function ExplorerLink({ path, label, className }: { path: string; label: 
 }
 
 export function ClusterUiSelect() {
-  const [showStatusBar, setShowStatusBar] = useState<Checked>(false);
+  const [showStatusBar, setShowStatusBar] = useState(false);
   const { clusters, setCluster, cluster } = useCluster();
 
   return (
@@ -42,7 +39,7 @@ export function ClusterUiSelect() {
         {clusters.map((item) => (
           <DropdownMenuCheckboxItem
             key={item.name}
-            checked={item.name === cluster.name ? true : false}
+            checked={item.name === cluster.name}
             onCheckedChange={setShowStatusBar}
             onClick={() => setCluster(item)}
           >

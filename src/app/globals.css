@@ -51,6 +51,32 @@
   /* Add dropdown list styles */
 }
 
+/* Hero text styles */
+.hero-text {
+  font-family: 'Inter', Arial, sans-serif; /* Use Inter font with fallback */
+  font-size: 3rem; /* Adjust font size as needed */
+  font-weight: bold; /* Set font weight to bold */
+  color: var(--color-primary); /* Set text color using custom color variable */
+  text-align: center; /* Center-align the text */
+  margin-top: 50px; /* Add margin from the top */
+  padding: 0 20px; /* Add padding for better spacing */
+  line-height: 1.5; /* Set line height for better readability */
+  background: linear-gradient(45deg, #030712, #4B5563); /* Add gradient background */
+  -webkit-background-clip: text; /* Apply gradient to text */
+  -webkit-text-fill-color: transparent; /* Make text transparent to reveal gradient */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Add shadow to text */
+  filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.5)); /* Add drop shadow to text */
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+  .hero-text {
+    font-size: 2rem; /* Reduce font size for smaller screens */
+    margin-top: 30px; /* Adjust margin for smaller screens */
+    padding: 0 10px; /* Adjust padding for smaller screens */
+  }
+}
+
 /* Tailwind base */
 @tailwind base;
 @tailwind components;
@@ -120,36 +146,50 @@
   }
 }
 
-@layer base {
-  * {
-    border-color: var(--border);
-  }
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-  }
-}
-
-.wallet-adapter-button-trigger {
-  background: rgb(17, 25, 39) !important;
-  border-radius: 6px !important;
-  padding-left: 16px !important;
-  padding-right: 16px !important;
-}
-
-.wallet-adapter-dropdown-list,
+/* Button styles */
+.wallet-adapter-button-trigger,
 .wallet-adapter-button {
-  font-family: inherit !important;
+  font-family: 'Inter', Arial, sans-serif; /* Use Inter font with fallback */
+  background-color: rgb(17, 25, 39);
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  height: 2.5rem;
+  color: #ffffff; /* Set text color to white */
+  border: none; /* Remove border */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.wallet-adapter-button {
-  height: 2.5rem !important;
+.wallet-adapter-button-trigger:hover,
+.wallet-adapter-button:hover {
+  background-color: #111827; /* Darken background color on hover */
 }
 
 /* Dropdown list styles */
 .wallet-adapter-dropdown-list {
-  font-family: inherit;
-  /* Add dropdown list styles */
+  font-family: 'Inter', Arial, sans-serif; /* Use Inter font with fallback */
+  background-color: #ffffff; /* Set background color for dropdown list */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add improved shadow */
+  padding: 12px 0; /* Add padding for better spacing */
+  max-height: 200px; /* Limit max height to enable scrolling */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+}
+
+/* Dropdown item styles */
+.wallet-adapter-dropdown-item {
+  padding: 8px 16px; /* Add padding to dropdown items */
+  cursor: pointer; /* Set cursor to pointer for clickable items */
+}
+
+/* Dropdown item hover styles */
+.wallet-adapter-dropdown-item:hover {
+  background-color: #f0f0f0; /* Change background color on hover for visual feedback */
+}
+
+/* Active dropdown item styles */
+.wallet-adapter-dropdown-item.active {
+  background-color: #e0e0e0; /* Set background color for active item */
 }
 
 /* Container styles */
@@ -169,11 +209,25 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adjust shadow for a softer effect */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Divider styles */
 .divider {
   border-top: 1px solid rgba(0, 0, 0, 0.1); /* Use rgba for a more subtle border color */
   margin-top: 20px;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 90%; /* Adjusted container width for smaller screens */
+    padding: 0 10px; /* Adjusted padding for smaller screens */
+  }
+
+  .footer {
+    padding: 15px; /* Adjusted padding for smaller screens */
+  }
+
+  /* Additional responsive styles can be added here */
 }
