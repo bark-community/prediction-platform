@@ -15,15 +15,21 @@ export default function DashboardFeature() {
           Unleash Predictive Insights on Solana
         </p>
         <nav className="mt-8 flex justify-center gap-4">
-          <Link href="https://whitepaper.barkprotocol.net" passHref>
-            <a className="px-5 py-3 bg-primary text-white rounded-lg shadow hover:bg-primary-dark transition-colors">
+          <Link
+            href="https://whitepaper.barkprotocol.net"
+            passHref
+            className="px-5 py-3 bg-primary text-white rounded-lg shadow hover:bg-primary-dark transition-colors">
+            
               Whitepaper
-            </a>
+            
           </Link>
-          <Link href="/make-prediction" passHref>
-            <a className="px-5 py-3 border border-primary text-primary rounded-lg shadow hover:bg-gray-100 transition-colors">
+          <Link
+            href="/make-prediction"
+            passHref
+            className="px-5 py-3 border border-primary text-primary rounded-lg shadow hover:bg-gray-100 transition-colors">
+            
               Make a Prediction
-            </a>
+            
           </Link>
         </nav>
       </div>

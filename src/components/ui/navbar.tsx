@@ -11,17 +11,19 @@ import { ModeToggle } from "./mode-toggle";
 import { ClusterUiSelect } from "../cluster/cluster-ui";
 
 const NavigationLink = ({ label, path, isActive }) => (
-  <Link href={path} passHref>
-    <a
-      className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-        isActive
-          ? "border-b-2 border-primary text-primary"
-          : "border-b-2 border-transparent text-primary hover:border-secondary hover:text-gray-500"
-      }`}
-    >
-      {label}
-    </a>
-  </Link>
+  (<Link
+  href={path}
+  passHref
+  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+    isActive
+      ? "border-b-2 border-primary text-primary"
+      : "border-b-2 border-transparent text-primary hover:border-secondary hover:text-gray-500"
+  }`}
+  legacyBehavior>
+
+    {label}
+
+  </Link>)
 );
 
 const pages = [
@@ -48,7 +50,7 @@ export function NavBar() {
                 {open ? <X className="block h-6 w-6" aria-hidden="true" /> : <Menu className="block h-6 w-6" aria-hidden="true" />}
               </Disclosure.Button>
               <div className="flex-shrink-0">
-                <Link href="/" passHref>
+                <Link href="/" passHref legacyBehavior>
                   <Image src="/bark-logo-dark.svg" alt="Bark Logo" width={100} height={100} priority />
                 </Link>
               </div>

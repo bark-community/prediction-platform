@@ -1,6 +1,8 @@
 "use client";
-import React, { useState } from "react";
+
+import { useState } from "react";
 import { useCluster } from "./cluster-data-access";
+import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,7 +13,9 @@ import {
 import { Trash2 } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-export function ExplorerLink({ path, label, className }) {
+type Checked = DropdownMenuCheckboxItemProps["checked"];
+
+export function ExplorerLink({ path, label, className }: { path: string; label: string; className?: string }) {
   const { getExplorerUrl } = useCluster();
 
   return (
@@ -19,7 +23,7 @@ export function ExplorerLink({ path, label, className }) {
       href={getExplorerUrl(path)}
       target="_blank"
       rel="noopener noreferrer"
-      className={className ? className : `link hover:text-grey-500`}
+      className={className ? className : `link hover:text-purple-500`}
     >
       {label}
     </a>
@@ -27,7 +31,7 @@ export function ExplorerLink({ path, label, className }) {
 }
 
 export function ClusterUiSelect() {
-  const [showStatusBar, setShowStatusBar] = useState(false);
+  const [showStatusBar, setShowStatusBar] = useState<Checked>(false);
   const { clusters, setCluster, cluster } = useCluster();
 
   return (
@@ -39,7 +43,7 @@ export function ClusterUiSelect() {
         {clusters.map((item) => (
           <DropdownMenuCheckboxItem
             key={item.name}
-            checked={item.name === cluster.name}
+            checked={item.name === cluster.name ? true : false}
             onCheckedChange={setShowStatusBar}
             onClick={() => setCluster(item)}
           >
@@ -74,7 +78,7 @@ export function ClusterUiTable() {
                 ) : (
                   <button
                     title="Select cluster"
-                    className="link link-secondary text-grey-500 underline"
+                    className="link link-secondary text-purple-500 underline"
                     onClick={() => setCluster(item)}
                   >
                     {item.name}
