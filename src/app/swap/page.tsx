@@ -1,53 +1,51 @@
 "use client";
+"use client";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useCluster } from "@/components/cluster/cluster-data-access";
 
 export default function JupiterSwap() {
-  const [isJupiterLoaded, setJupiterLoaded] = useState(false);
   const { cluster } = useCluster();
-  console.log("cluster name", cluster.name);
-
   const passthroughWalletContextState = useWallet();
-
-  // Define the initializeJupiter function here so it's accessible in both useEffect and onLoad
-  const initializeJupiter = () => {
-    if (window.Jupiter) {
-      window.Jupiter.init({
-        displayMode: "integrated",
-        integratedTargetId: "integrated-terminal",
-        endpoint: "",
-        enableWalletPassthrough: true,
-        formProps: {
-          fixedOutputMint: false,
-        },
-      });
-      setJupiterLoaded(true);
-    }
-  };
+  const [isJupiterLoaded, setJupiterLoaded] = useState(false);
 
   useEffect(() => {
-    if (cluster.name === "mainnet") {
+    if (cluster.name === "mainnet" && !isJupiterLoaded) {
+      const initializeJupiter = () => {
+        if (window.Jupiter) {
+          window.Jupiter.init({
+            displayMode: "integrated",
+            integratedTargetId: "integrated-terminal",
+            endpoint: "",
+            enableWalletPassthrough: true,
+            formProps: {
+              fixedOutputMint: false,
+            },
+          });
+          setJupiterLoaded(true);
+        }
+      };
+
+      if (window.Jupiter && window.Jupiter.syncProps) {
+        window.Jupiter.syncProps({ passthroughWalletContextState });
+      }
+
       initializeJupiter();
     }
-
-    if (window.Jupiter && window.Jupiter.syncProps) {
-      window.Jupiter.syncProps({ passthroughWalletContextState });
-    }
-  }, [isJupiterLoaded, passthroughWalletContextState, cluster]);
+  }, [cluster.name, isJupiterLoaded, passthroughWalletContextState]);
 
   return (
     <div className="flex justify-center items-center sm:mt-24">
       {cluster.name === "mainnet" ? (
-        <div key={cluster.name} className="">
+        <div key={cluster.name}>
           <Script
             src="https://terminal.jup.ag/main-v2.js"
             strategy="afterInteractive"
+            onError={(error) => console.error("Error loading Jupiter Terminal:", error)}
             onLoad={() => {
-              // Call the initialize function once the script is loaded
               if (!isJupiterLoaded) {
-                initializeJupiter();
+                setJupiterLoaded(true);
               }
             }}
           />
