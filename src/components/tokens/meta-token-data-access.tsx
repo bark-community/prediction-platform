@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { ellipsify } from "@/lib/utils";
 import { useCluster } from "@/components/cluster/cluster-data-access";
 import {
+  TOKEN_2022_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
   MINT_SIZE,
   ASSOCIATED_TOKEN_PROGRAM_ID,
@@ -40,7 +41,7 @@ export function useCreateMintWithMetadata({ address }: { address: PublicKey }) {
           // store enough lamports needed for our `space` to be rent exempt
           lamports: await connection.getMinimumBalanceForRentExemption(MINT_SIZE),
           // tokens are owned by the "token program"
-          programId: TOKEN_PROGRAM_ID,
+          programId: TOKEN_2022_PROGRAM_ID,
         });
 
         // Initialize that account as a Mint
@@ -90,7 +91,7 @@ export function useCreateMintWithMetadata({ address }: { address: PublicKey }) {
           tokenMint.publicKey,
           address,
           false,
-          TOKEN_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           ASSOCIATED_TOKEN_PROGRAM_ID
         );
 
@@ -99,7 +100,7 @@ export function useCreateMintWithMetadata({ address }: { address: PublicKey }) {
           associatedToken,
           address,
           tokenMint.publicKey,
-          TOKEN_PROGRAM_ID,
+          TOKEN_2022_PROGRAM_ID,
           ASSOCIATED_TOKEN_PROGRAM_ID
         );
 
@@ -125,7 +126,7 @@ export function useCreateMintWithMetadata({ address }: { address: PublicKey }) {
     },
     onSuccess: (signature) => {
       if (signature) {
-        toast.success("Transaction Successfull", {
+        toast.success("Transaction Successful", {
           description: ellipsify(signature),
           action: {
             label: "Explorer Link",
