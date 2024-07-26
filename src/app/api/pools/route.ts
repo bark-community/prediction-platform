@@ -23,7 +23,7 @@ export async function GET(request: Request) {
       return shapeBank(bank, bankMetadata);
     });
 
-    // const SAMPLE_WALLET = new PublicKey("FHsALmky5sQLUx6CrjWRLRfc4WQYjv4ecmWML3eLLAB1");
+    // const SAMPLE_WALLET = new PublicKey("2NTvEssJ2i998V2cMGT4Fy3JhyFnAzHFonDo9dbAkVrg");
     // const marginfiAccounts = await client.getMarginfiAccountsForAuthority(SAMPLE_WALLET);
     // const userAccountsShaped = marginfiAccounts.map((account) => shapeUserAccount(account, banksRaw, bankMetadataMap));
 
